@@ -1,77 +1,48 @@
-import React,{useState} from 'react'
+import React from 'react';
+
+const ITEMS = [
+  {
+    id: 'what',
+    title: 'What is TextUtils?',
+    body: 'TextUtils is a small utility for quickly changing the case of a piece of text. Paste your text, pick a conversion and copy the result.',
+  },
+  {
+    id: 'features',
+    title: 'What can it do?',
+    body: 'Convert text to UPPERCASE or lowercase, copy or clear it, and see a live word count, character count and estimated reading time. It also has a light and dark theme that is remembered between visits.',
+  },
+  {
+    id: 'privacy',
+    title: 'Is my text sent anywhere?',
+    body: 'No. Everything happens in your browser. Nothing you type is uploaded or stored on a server.',
+  },
+];
 
 export default function About() {
-
-    const [btn,setbtn] = useState('Enable dark mode');
-
-    const [myStyle,setStyle] = useState({
-        color: 'white',
-        backgroundColor: 'white'
-    });
-
-    const handleOnClick=(event)=>{
-        if(myStyle.color=='black')
-        {
-            setStyle({
-                color : 'white',
-                backgroundColor : 'white'
-            })
-            setbtn('Enable dark mode');
-        }
-        else
-        {
-            setStyle({
-                color : 'black',
-                backgroundColor : 'black'
-            })
-            setbtn('Enable light mode')
-        }
-    }
-
-    return (
-        <>
-        <div className='container m-5' style={myStyle}>
-            <h3> About Us</h3>
-            <div className="accordion" id="accordionExample">
-                <div className="accordion-item">
-                    <h2 className="accordion-header">
-                        <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Accordion Item #1
-                        </button>
-                    </h2>
-                    <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                        <div className="accordion-body">
-                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                    </div>
-                </div>
-                <div className="accordion-item">
-                    <h2 className="accordion-header">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Accordion Item #2
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                        <div className="accordion-body">
-                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                    </div>
-                </div>
-                <div className="accordion-item">
-                    <h2 className="accordion-header">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Accordion Item #3
-                        </button>
-                    </h2>
-                    <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                        <div className="accordion-body">
-                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                    </div>
-                </div>
+  return (
+    <div className="tu-card p-4 p-md-5 mx-auto" style={{ maxWidth: 820 }}>
+      <h1 className="h3 fw-bold mb-4">About TextUtils</h1>
+      <div className="accordion" id="aboutAccordion">
+        {ITEMS.map((item, i) => (
+          <div className="accordion-item" key={item.id}>
+            <h2 className="accordion-header">
+              <button
+                className={`accordion-button ${i === 0 ? '' : 'collapsed'}`}
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target={`#about-${item.id}`}
+                aria-expanded={i === 0}
+                aria-controls={`about-${item.id}`}
+              >
+                {item.title}
+              </button>
+            </h2>
+            <div id={`about-${item.id}`} className={`accordion-collapse collapse ${i === 0 ? 'show' : ''}`} data-bs-parent="#aboutAccordion">
+              <div className="accordion-body">{item.body}</div>
             </div>
-        </div>
-        <button type="button" class="btn btn-secondary" value={btn} onClick={handleOnClick}>{btn}</button>
-        </>
-    )
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
