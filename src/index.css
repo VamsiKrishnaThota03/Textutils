@@ -1,0 +1,83 @@
+:root {
+  --tu-accent: #2563eb;
+}
+
+[data-bs-theme='light'] {
+  --bs-body-bg: #f6f7fb;
+  --tu-surface: #ffffff;
+  --tu-border: #e3e6ee;
+}
+
+[data-bs-theme='dark'] {
+  --bs-body-bg: #0f1115;
+  --bs-body-color: #e6e8ee;
+  --tu-surface: #171a21;
+  --tu-border: #2a2f3a;
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.tu-navbar {
+  background: var(--tu-surface);
+  border-bottom: 1px solid var(--tu-border);
+}
+
+.tu-brand {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tu-card {
+  background: var(--tu-surface);
+  border: 1px solid var(--tu-border);
+  border-radius: 1rem;
+}
+
+.tu-textarea {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  resize: vertical;
+  min-height: 220px;
+  background: var(--bs-body-bg);
+}
+
+.tu-stat {
+  background: var(--bs-body-bg);
+  border: 1px solid var(--tu-border);
+  border-radius: 0.75rem;
+}
+
+.tu-stat strong {
+  font-size: 1.5rem;
+  display: block;
+  line-height: 1.2;
+}
+
+.tu-preview {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-height: 280px;
+  overflow: auto;
+}
+
+.tu-toast {
+  position: fixed;
+  top: 4.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1080;
+  min-width: min(360px, calc(100% - 2rem));
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.form-check-input {
+  cursor: pointer;
+}
