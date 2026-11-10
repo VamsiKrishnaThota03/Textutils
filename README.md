@@ -55,7 +55,7 @@ Textutils/
 ### Install and run
 
 ```bash
-git clone https://github.com/VamsiKrishnaThota03/Textutils.git
+git clone https://github.com/VamsiKrishnaThota03/text-utils.git
 cd Textutils
 npm install
 npm start        # http://localhost:3000
